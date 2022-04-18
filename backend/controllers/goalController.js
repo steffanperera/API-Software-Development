@@ -1,32 +1,36 @@
-// desc:    Get goals
+// desc:    get goals
 // route:   GET /api/goals
-// access:  Private
+// access:  private
 const getGoals = (req, res) => {
-  res.status(200).json({ message: "Get goals" })
+  res.status(200).json({ message: "get goals" })
 }
 
-// desc:    Set goal
+// desc:    set goal
 // route:   POST /api/goals
-// access:  Private
+// access:  private
 const setGoal = (req, res) => {
-  // code - error handling               
-  console.log(req.body)
+  // code - error handling
+  if (!req.body.text) {
+    res.status(400)
+    throw new Error ("please add a text feild")
+    // express error handler
+  }
 
-  res.status(200).json({ message: "Set goal" })
+  res.status(200).json({ message: "set goal" })
 }
 
-// desc:    Update goal
+// desc:    update goal
 // route:   PUT /api/goals/:id
-// access:  Private
+// access:  private
 const updateGoal = (req, res) => {
-  res.status(200).json({ message: `Update goal ${req.params.id}` })
+  res.status(200).json({ message: `update goal ${req.params.id}` })
 }
 
-// desc:    Delete goals
+// desc:    delete goals
 // route:   DELETE /api/goals/:id
-// access:  Private
+// access:  private
 const deleteGoal = (req, res) => {
-  res.status(200).json({ message: `Delete goal ${req.params.id}` })
+  res.status(200).json({ message: `delete goal ${req.params.id}` })
 }
 
 module.exports = {
