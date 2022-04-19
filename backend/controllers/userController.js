@@ -21,15 +21,15 @@ const setUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "set user" })
 })
 
-// desc:    update goal
-// route:   PUT /api/goals/:id
+// desc:    update user
+// route:   PUT /api/users/:id
 // access:  private
 const updateUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: `update user ${req.params.id}` })
 })
 
-// desc:    delete goals
-// route:   DELETE /api/goals/:id
+// desc:    delete user
+// route:   DELETE /api/users/:id
 // access:  private
 const deleteUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: `delete user ${req.params.id}` })
