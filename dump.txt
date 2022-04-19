@@ -1,0 +1,17 @@
+requirements
+    - free online registeration
+    - job seeker upload relevent docyments
+    - officers can view and validate applications
+    - companies can find, recruite and fire employees
+    - employee can update location and status
+    - complain system
+
+routes => get / post / out / delete
+
+end points
+    api/goals (test)
+    api/users
+        - officer / job seeker / employee / companies / 3rd party
+    api/officers
+    api/companies
+    api/other   (3rd parties)
