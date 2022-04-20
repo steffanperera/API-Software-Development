@@ -1,3 +1,10 @@
+- API Software Development -
+
+
+
+project needs
+    - free online registeration
+
 requirements
     - free online registeration
     - job seeker upload relevent docyments
@@ -15,3 +22,13 @@ end points
     api/officers
     api/companies
     api/other   (3rd parties)
+
+database => MongoDB
+    - no sql datbase
+    - no tables, rows and cols
+    - collection of documents
+    - documents are json objects
+    - json object > 
+            literals are surrounded by curly braces {}
+            JSON object literals contains key/value pairs
+            Keys and values are separated by a colon
