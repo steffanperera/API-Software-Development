@@ -1,9 +1,11 @@
 - API Software Development -
 
-
+PUSL3111 Team 2 
 
 project needs
-    - free online registeration
+    - SL Bureau of foreign empoyment want us to
+    - make Sri Lanka the best resourse for overseas human resourse
+    - build API for bureau's website
 
 requirements
     - free online registeration
@@ -13,7 +15,11 @@ requirements
     - employee can update location and status
     - complain system
 
-routes => get / post / out / delete
+API
+    - routes => get / post / out / delete
+    - controllers
+    - main routes
+    - error handler
 
 end points
     api/goals (test)
