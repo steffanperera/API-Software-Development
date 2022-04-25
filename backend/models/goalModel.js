@@ -3,9 +3,9 @@ const mongoose = require("mongoose")
 const goalSchema = mongoose.Schema(
   {
     citizen: {
-      type: {
-        type: mongoose.Schema.Types.ObjectId,
-      }
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Citizen",
     },
     text: {
       type: String,
