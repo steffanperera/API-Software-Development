@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
-// registeration
-
+// create (registeration)
+router.post("/")
 
 module.exports = router
