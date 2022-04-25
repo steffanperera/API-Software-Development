@@ -2,11 +2,10 @@ const mongoose = require("mongoose")
 
 const goalSchema = mongoose.Schema(
   {
-    // associate user with test goal
-    user: {
-      tepy: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "User",
+    citizen: {
+      type: {
+        type: mongoose.Schema.Types.ObjectId,
+      }
     },
     text: {
       type: String,
