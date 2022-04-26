@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler")
-const Citizen = require("../models/companyModel")
+const Company = require("../models/companyModel")
 
 // desc:    get companies
 // route:   GET /api/companies
@@ -12,17 +12,26 @@ const getCompanies = asyncHandler(async (req, res) => {
 // desc:    create company
 // route:   POST /api/citizens
 const registerCompany = asyncHandler(async (req, res) => {
-  const { username, password, company, field, country, address, email, phone } = req.body
+  const { username, password, company_name, field, country, address, email, phone } = req.body
 
-  if (!username || !password || !company || !field || !country || !address || !email || !phone) {
+  if (
+    !username ||
+    !password ||
+    !company_name ||
+    !field ||
+    !country ||
+    !address ||
+    !email ||
+    !phone
+  ) {
     res.status(400)
     throw new Error("please add all fields")
   }
 
-  const citizen = await Citizen.create({
+  const company = await Citizen.create({
     username: req.body.username,
     password: req.body.password,
-    company: req.body.company,
+    company_name: req.body.company_name,
     field: req.body.field,
     country: req.body.country,
     address: req.body.address,
@@ -30,7 +39,7 @@ const registerCompany = asyncHandler(async (req, res) => {
     phone: req.body.phone,
   })
 
-  res.status(200).json(citizen)
+  res.status(200).json(company)
 })
 
 module.exports = {

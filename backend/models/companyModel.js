@@ -14,7 +14,7 @@ const companySchema = mongoose.Schema(
       unique: true,
     },
 
-    company: {
+    company_name: {
       type: String,
       required: [true, "please add company name!"],
     },
