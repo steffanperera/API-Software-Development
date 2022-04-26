@@ -28,7 +28,7 @@ const registerCompany = asyncHandler(async (req, res) => {
     throw new Error("please add all fields")
   }
 
-  const company = await Citizen.create({
+  const company = await Company.create({
     username: req.body.username,
     password: req.body.password,
     company_name: req.body.company_name,
