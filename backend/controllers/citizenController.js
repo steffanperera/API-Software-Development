@@ -1,5 +1,3 @@
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcryptjs")
 const asyncHandler = require("express-async-handler")
 const Citizen = require("../models/citizenModel")
 
@@ -11,7 +9,7 @@ const getCitizens = asyncHandler(async (req, res) => {
   res.status(200).json(citizens)
 })
 
-// desc:    create user
+// desc:    create citizen
 // route:   POST /api/citizens
 const registerCitizen = asyncHandler(async (req, res) => {
   const { nic, password, name, age, address, email, phone } = req.body

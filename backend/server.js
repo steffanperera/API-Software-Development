@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use("/api/goals", require("./routes/goalRoutes"))
 app.use("/api/users", require("./routes/userRoutes"))
 app.use("/api/citizens", require("./routes/citizenRoutes"))
+app.use("/api/companies", require("./routes/companyRoutes"))
 
 app.use(errorHandler)
 
