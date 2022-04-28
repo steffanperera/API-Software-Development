@@ -32,7 +32,29 @@ const registerCitizen = asyncHandler(async (req, res) => {
   res.status(200).json(citizen)
 })
 
+// desc:    authenticate citizen
+// route:   POST /api/citizens/login
+const loginCitizen = asyncHandler(async (req, res) => {
+  const { nic, password } = req.body
+
+  const citizen = await Citizen.findOne({ nic })
+
+  if (citizen && password) {
+    res.json({
+      _id: citizen.id,
+      name: citizen.name,
+      email: citizen.email,
+    })
+  } else {
+    res.status(400)
+    throw new Error("invalid credentials!")
+  }
+
+  res.json({ message: "citizen authenticated!" })
+})
+
 module.exports = {
   getCitizens,
   registerCitizen,
+  loginCitizen,
 }

@@ -42,7 +42,12 @@ const registerCompany = asyncHandler(async (req, res) => {
   res.status(200).json(company)
 })
 
+// desc:    authenticate company
+// route:   POST /api/companies/login
+const loginCompany = asyncHandler(async (req, res) => {})
+
 module.exports = {
   getCompanies,
   registerCompany,
+  loginCompany,
 }

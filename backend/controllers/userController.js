@@ -14,7 +14,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("please add all fields")
   }
 
-  const userExists = await Users.findOne({ nic })
+  const userExists = await User.findOne({ nic })
 
   if (userExists) {
     res.status(400)
@@ -28,8 +28,20 @@ const registerUser = asyncHandler(async (req, res) => {
 // route:   POST /api/users/login
 // access:  public
 const loginUser = asyncHandler(async (req, res) => {
-  if (nic && password) {
-    res.json({})
+  const { nic, password } = req.body
+
+  // check user nic
+  const user = await User.findOne({ nic })
+
+  if (user && password) {
+    res.json({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+    })
+  } else {
+    res.status(400)
+    throw new Error("invalid credentials!")
   }
 
   res.json({ message: "login user" })
