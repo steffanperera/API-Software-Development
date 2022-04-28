@@ -27,7 +27,28 @@ const registerOfficer = asyncHandler(async (req, res) => {
   res.status(200).json(officer)
 })
 
+// desc:    authenticate officer
+// route:   POST /api/officers/login
+const loginOfficer = asyncHandler(async (req, res) => {
+  const { officer_id, password } = req.body
+
+  const officer = await Officer.findOne({ officer_id })
+
+  if (officer && password) {
+    res.json({
+      _id: officer.id,
+      officer_id: officer.officer_id,
+    })
+  } else {
+    res.status(400)
+    throw new Error("invalid credentials!")
+  }
+
+  res.json({ message: "officer authenticated!" })
+})
+
 module.exports = {
   getOfficers,
   registerOfficer,
+  loginOfficer,
 }
