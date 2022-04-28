@@ -44,7 +44,24 @@ const registerCompany = asyncHandler(async (req, res) => {
 
 // desc:    authenticate company
 // route:   POST /api/companies/login
-const loginCompany = asyncHandler(async (req, res) => {})
+const loginCompany = asyncHandler(async (req, res) => {
+  const { username, password } = req.body
+
+  const company = await Company.findOne({ username })
+
+  if (company && password) {
+    res.json({
+      _id: company.id,
+      company_name: company.company_name,
+      email: company.email,
+    })
+  } else {
+    res.status(400)
+    throw new Error("invalid credentials!")
+  }
+
+  res.json({ message: "company authenticated!" })
+})
 
 module.exports = {
   getCompanies,
