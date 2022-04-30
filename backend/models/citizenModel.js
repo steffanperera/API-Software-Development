@@ -40,6 +40,14 @@ const citizenSchema = mongoose.Schema(
       required: [true, "please add phone!"],
       unique: true,
     },
+
+    qualifications: {
+      type: String,
+    },
+
+    documents: {
+      type: String,
+    },
   },
   {
     timestamps: true,

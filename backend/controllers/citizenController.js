@@ -12,11 +12,11 @@ const getCitizens = asyncHandler(async (req, res) => {
 // desc:    create citizen
 // route:   POST /api/citizens
 const registerCitizen = asyncHandler(async (req, res) => {
-  const { nic, password, name, age, address, email, phone } = req.body
+  const { nic, password, name, age, address, email, phone, qualifications } = req.body
 
   if (!nic || !password || !name || !age || !address || !email || !phone) {
     res.status(400)
-    throw new Error("please add all fields")
+    throw new Error("please add all fields!")
   }
 
   const citizen = await Citizen.create({
@@ -53,8 +53,25 @@ const loginCitizen = asyncHandler(async (req, res) => {
   res.json({ message: "citizen authenticated!" })
 })
 
+// desc:    add qualifications
+// route:   POST /api/citizens/:id
+const addQualifications = asyncHandler(async (req, res) => {
+  if (!req.body.text) {
+    res.status(400)
+    throw new Error("please add qualifications!")
+  }
+
+  const citizen = await Citizen.create({
+    text: req.body.text,
+    citizen: req.citizen.nic,
+  })
+
+  res.status(200).json(citizen)
+})
+
 module.exports = {
   getCitizens,
   registerCitizen,
   loginCitizen,
+  addQualifications,
 }
