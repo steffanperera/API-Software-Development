@@ -41,11 +41,21 @@ const citizenSchema = mongoose.Schema(
       unique: true,
     },
 
+    // qualifications
     qualifications: {
       type: String,
     },
 
-    documents: {
+    // documents
+    birth_certificate: {
+      type: String,
+    },
+
+    cv: {
+      type: String,
+    },
+
+    passport_copy: {
       type: String,
     },
   },

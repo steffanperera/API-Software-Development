@@ -12,7 +12,7 @@ const getCitizens = asyncHandler(async (req, res) => {
 // desc:    create citizen
 // route:   POST /api/citizens
 const registerCitizen = asyncHandler(async (req, res) => {
-  const { nic, password, name, age, address, email, phone, qualifications } = req.body
+  const { nic, password, name, age, address, email, phone } = req.body
 
   if (!nic || !password || !name || !age || !address || !email || !phone) {
     res.status(400)
@@ -54,16 +54,36 @@ const loginCitizen = asyncHandler(async (req, res) => {
 })
 
 // desc:    add qualifications
-// route:   POST /api/citizens/:id
+// route:   put /api/citizens/id
 const addQualifications = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  const { qualifications } = req.body
+
+  if (!qualifications) {
     res.status(400)
     throw new Error("please add qualifications!")
   }
 
-  const citizen = await Citizen.create({
-    text: req.body.text,
-    citizen: req.citizen.nic,
+  const citizen = await Citizen.updateOne({
+    qualifications: req.body.qualifications,
+  })
+
+  res.status(200).json(citizen)
+})
+
+// desc:    add documents
+// route:   put /api/citizens/id
+const addDocuments = asyncHandler(async (req, res) => {
+  const { birth_certificate, cv, passport_copy } = req.body
+
+  if (!birth_certificate || !cv || !passport_copy) {
+    res.status(400)
+    throw new Error("please add relevent documents!")
+  }
+
+  const citizen = await Citizen.updateOne({
+    birth_certificate: req.body.birth_certificate,
+    cv: req.body.cv,
+    passport_copy: req.body.passport_copy,
   })
 
   res.status(200).json(citizen)
@@ -74,4 +94,5 @@ module.exports = {
   registerCitizen,
   loginCitizen,
   addQualifications,
+  addDocuments,
 }

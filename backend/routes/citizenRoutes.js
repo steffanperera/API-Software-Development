@@ -5,6 +5,7 @@ const {
   registerCitizen,
   loginCitizen,
   addQualifications,
+  addDocuments,
 } = require("../controllers/citizenController")
 
 // get
@@ -17,6 +18,6 @@ router.post("/", registerCitizen)
 router.post("/login", loginCitizen)
 
 // add qualifications
-router.post("/:id", addQualifications)
+router.put("/:id", addQualifications)
 
 module.exports = router
