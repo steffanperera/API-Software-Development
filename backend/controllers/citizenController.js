@@ -54,7 +54,7 @@ const loginCitizen = asyncHandler(async (req, res) => {
 })
 
 // desc:    add qualifications
-// route:   put /api/citizens/id
+// route:   put /api/citizens/:id
 const addQualifications = asyncHandler(async (req, res) => {
   const { qualifications } = req.body
 
@@ -71,7 +71,7 @@ const addQualifications = asyncHandler(async (req, res) => {
 })
 
 // desc:    add documents
-// route:   put /api/citizens/id
+// route:   put /api/citizens/:id
 const addDocuments = asyncHandler(async (req, res) => {
   const { birth_certificate, cv, passport_copy } = req.body
 
@@ -89,10 +89,19 @@ const addDocuments = asyncHandler(async (req, res) => {
   res.status(200).json(citizen)
 })
 
+// desc:    sort citizens by nic
+// route:   GET /api/citizens/:nic
+const sortCitizens = asyncHandler(async (req, res) => {
+  const citizens = await Citizen.find()
+
+  res.status(200).json(citizens)
+})
+
 module.exports = {
   getCitizens,
   registerCitizen,
   loginCitizen,
   addQualifications,
   addDocuments,
+  sortCitizens,
 }

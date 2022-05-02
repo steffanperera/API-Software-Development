@@ -6,6 +6,7 @@ const {
   loginCitizen,
   addQualifications,
   addDocuments,
+  sortCitizens,
 } = require("../controllers/citizenController")
 
 // get
@@ -22,5 +23,8 @@ router.put("/:id", addQualifications)
 
 // add documents
 router.put("/docs/:id", addDocuments)
+
+// sort by nic
+router.get("/:nic", sortCitizens)
 
 module.exports = router
