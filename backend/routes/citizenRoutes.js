@@ -20,7 +20,7 @@ router.post("/login", loginCitizen)
 // add qualifications
 router.put("/:id", addQualifications)
 
-// add qualifications
+// add documents
 router.put("/docs/:id", addDocuments)
 
 module.exports = router
