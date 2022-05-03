@@ -1,3 +1,5 @@
+const { request } = require("express")
+const { response } = require("express")
 const express = require("express")
 const router = express.Router()
 const {
@@ -6,7 +8,7 @@ const {
   loginCitizen,
   addQualifications,
   addDocuments,
-  sortCitizens,
+  sortCitizen,
 } = require("../controllers/citizenController")
 
 // get
@@ -25,6 +27,6 @@ router.put("/:id", addQualifications)
 router.put("/docs/:id", addDocuments)
 
 // sort by nic
-router.get("/:nic", sortCitizens)
+router.get("/:nic", sortCitizen)
 
 module.exports = router

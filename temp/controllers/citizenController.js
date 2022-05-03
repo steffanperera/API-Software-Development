@@ -1,3 +1,4 @@
+const { response } = require("express")
 const asyncHandler = require("express-async-handler")
 const Citizen = require("../models/citizenModel")
 
@@ -89,13 +90,20 @@ const addDocuments = asyncHandler(async (req, res) => {
   res.status(200).json(citizen)
 })
 
-// desc:    sort citizens by nic
+// desc:    get by nic
 // route:   GET /api/citizens/:nic
-const sortCitizens = asyncHandler(async (req, res) => {
-  const citizens = await Citizen.find()
+const sortCitizen = asyncHandler(async (req, res) => {
+  const citizen = await Citizen.find()
+  let nic = req.params.nic
 
-  res.status(200).json(citizens)
+  if(citizen[nic]){
+    res.status(200).json(nic.citizen)
+  }
+  else{
+    res.json("not found!")
+  }
 })
+
 
 module.exports = {
   getCitizens,
@@ -103,5 +111,5 @@ module.exports = {
   loginCitizen,
   addQualifications,
   addDocuments,
-  sortCitizens,
+  sortCitizen,
 }
