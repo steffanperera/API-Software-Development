@@ -5,7 +5,6 @@ const jobSchema = mongoose.Schema({
     type: String,
     required: [true, "please add text!"],
   },
-},
-)
+})
 
 module.exports = mongoose.model("Job", jobSchema)
