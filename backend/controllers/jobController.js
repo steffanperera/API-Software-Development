@@ -1,8 +1,12 @@
 const asyncHandler = require("express-async-handler")
 
+const Job = require("../models/jobModel")
+
 // get jobs => GET /api/jobs
 const getJobs = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "get jobs!" })
+  const jobs = await Job.find()
+
+  res.status(200).json(jobs)
 })
 
 // post jobs => POST /api/jobs

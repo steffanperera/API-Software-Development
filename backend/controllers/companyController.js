@@ -1,5 +1,7 @@
 const asyncHandler = require("express-async-handler")
 
+const Company = require("../models/companyModel")
+
 // get companies => GET /api/companies
 const getCompanies = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "get companies!" })
