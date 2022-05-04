@@ -1,11 +1,13 @@
 const express = require("express")
 const router = express.Router()
-const { getCompanies, postCompany, deleteCompany } = require("../controllers/companyController")
+const { getCompanies, registerCompany, loginCompany } = require("../controllers/companyController")
 
 router.get("/", getCompanies)
 
-router.post("/", postCompany)
+// register company
+router.post("/", registerCompany)
 
-router.delete("/:id", deleteCompany)
+// authenticate company
+router.post("/login", loginCompany)
 
 module.exports = router
