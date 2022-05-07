@@ -6,6 +6,11 @@ const citizenSchema = mongoose.Schema({
     required: [true, "please add citizen name!"],
     unique: [true],
   },
+  nic: {
+    type: String,
+    required: [true, "please add nice number!"],
+    unique: [true],
+  },
   username: {
     type: String,
     required: [true, "please add username!"],

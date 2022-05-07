@@ -13,9 +13,9 @@ const getCitizens = asyncHandler(async (req, res) => {
 
 // register citizen => POST /api/citizens
 const registerCitizen = asyncHandler(async (req, res) => {
-  const { name, username, email, password } = req.body
+  const { name, nic, username, email, password } = req.body
 
-  if (!name || !username || !email || !password) {
+  if (!name || !nic || !username || !email || !password) {
     res.status(400)
     throw new Error("please add all fields!")
   }
@@ -34,6 +34,7 @@ const registerCitizen = asyncHandler(async (req, res) => {
   // create citizen
   const citizen = await Citizen.create({
     name,
+    nic,
     username,
     email,
     password: hashedPassword,
@@ -41,9 +42,10 @@ const registerCitizen = asyncHandler(async (req, res) => {
 
   if (citizen) {
     res.status(201).json({
-      msg: "citizen registered!",
+      message: "citizen registered!",
       _id: citizen.id,
       name: citizen.name,
+      nic: citizen.nic,
       username: citizen.username,
       email: citizen.email,
     })
@@ -62,8 +64,9 @@ const loginCitizen = asyncHandler(async (req, res) => {
 
   if (citizen && (await bcrypt.compare(password, citizen.password))) {
     res.json({
-      msg: "citizen authenticated!",
+      message: "citizen authenticated!",
       _id: citizen.id,
+      nic: citizen.nic,
       name: citizen.name,
     })
   } else {

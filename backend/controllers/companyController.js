@@ -43,7 +43,7 @@ const registerCompany = asyncHandler(async (req, res) => {
 
   if (company) {
     res.status(201).json({
-      msg: "company registered!",
+      message: "company registered!",
       _id: company.id,
       name: company.name,
       username: company.username,
@@ -66,7 +66,7 @@ const loginCompany = asyncHandler(async (req, res) => {
 
   if (company && (await bcrypt.compare(password, company.password))) {
     res.json({
-      msg: "company authenticated!",
+      message: "company authenticated!",
       _id: company.id,
       name: company.name,
     })

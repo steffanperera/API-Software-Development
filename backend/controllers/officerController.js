@@ -39,7 +39,7 @@ const registerOfficer = asyncHandler(async (req, res) => {
 
   if (officer) {
     res.status(201).json({
-      msg: "officer registered!",
+      message: "officer registered!",
       _id: officer.id,
       officer_id: officer.officer_id,
     })
@@ -58,7 +58,7 @@ const loginOfficer = asyncHandler(async (req, res) => {
 
   if (officer && (await bcrypt.compare(password, officer.password))) {
     res.json({
-      msg: "officer authenticated!",
+      message: "officer authenticated!",
       _id: officer.id,
       officer_id: officer.officer_id,
     })
@@ -66,8 +66,6 @@ const loginOfficer = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error("invalid officer credentials!")
   }
-
-  res.status(200).json({ message: "login officer!" })
 })
 
 module.exports = { getOfficers, registerOfficer, loginOfficer }
