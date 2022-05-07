@@ -41,6 +41,7 @@ const registerCitizen = asyncHandler(async (req, res) => {
 
   if (citizen) {
     res.status(201).json({
+      msg: "citizen registered!",
       _id: citizen.id,
       name: citizen.name,
       username: citizen.username,

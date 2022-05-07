@@ -43,6 +43,7 @@ const registerCompany = asyncHandler(async (req, res) => {
 
   if (company) {
     res.status(201).json({
+      msg: "company registered!",
       _id: company.id,
       name: company.name,
       username: company.username,
