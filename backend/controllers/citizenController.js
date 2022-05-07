@@ -13,9 +13,9 @@ const getCitizens = asyncHandler(async (req, res) => {
 
 // register citizen => POST /api/citizens
 const registerCitizen = asyncHandler(async (req, res) => {
-  const { name, nic, username, email, password } = req.body
+  const { name, nic, address, phone, username, email, password } = req.body
 
-  if (!name || !nic || !username || !email || !password) {
+  if (!name || !nic || !address || !username || !email || !password) {
     res.status(400)
     throw new Error("please add all fields!")
   }
@@ -35,6 +35,8 @@ const registerCitizen = asyncHandler(async (req, res) => {
   const citizen = await Citizen.create({
     name,
     nic,
+    address,
+    phone,
     username,
     email,
     password: hashedPassword,
@@ -46,6 +48,8 @@ const registerCitizen = asyncHandler(async (req, res) => {
       _id: citizen.id,
       name: citizen.name,
       nic: citizen.nic,
+      address: citizen.address,
+      phone: citizen.phone,
       username: citizen.username,
       email: citizen.email,
     })
@@ -57,7 +61,7 @@ const registerCitizen = asyncHandler(async (req, res) => {
 
 // authenticate citizen => POST /api/citizens/login
 const loginCitizen = asyncHandler(async (req, res) => {
-  const {username, password} = req.body
+  const { username, password } = req.body
 
   // check for citizen username
   const citizen = await Citizen.findOne({ username })

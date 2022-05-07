@@ -8,8 +8,16 @@ const citizenSchema = mongoose.Schema({
   },
   nic: {
     type: String,
-    required: [true, "please add nice number!"],
+    required: [true, "please add nic number!"],
     unique: [true],
+  },
+  address: {
+    type: String,
+    required: [true, "please add address!"],
+  },
+  phone: {
+    type: String,
+    required: [true, "please add phone number!"],
   },
   username: {
     type: String,
