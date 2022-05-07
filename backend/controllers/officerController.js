@@ -32,7 +32,7 @@ const registerOfficer = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt)
 
   // create company
-  const officer = await Company.create({
+  const officer = await Officer.create({
     officer_id,
     password: hashedPassword,
   })
@@ -41,7 +41,7 @@ const registerOfficer = asyncHandler(async (req, res) => {
     res.status(201).json({
       msg: "officer registered!",
       _id: officer.id,
-      username: officer.username,
+      officer_id: officer.officer_id,
     })
   } else {
     res.status(400)

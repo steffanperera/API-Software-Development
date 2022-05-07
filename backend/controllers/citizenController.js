@@ -32,7 +32,7 @@ const registerCitizen = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt)
 
   // create citizen
-  const citizen = await Company.create({
+  const citizen = await Citizen.create({
     name,
     username,
     email,

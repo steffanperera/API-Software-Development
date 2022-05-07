@@ -59,6 +59,8 @@ const registerCompany = asyncHandler(async (req, res) => {
 
 // authenticate company => POST /api/companies/login
 const loginCompany = asyncHandler(async (req, res) => {
+  
+
   res.status(200).json({ message: "login company!" })
 })
 
