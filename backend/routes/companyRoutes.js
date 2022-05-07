@@ -10,4 +10,7 @@ router.post("/", registerCompany)
 // authenticate company
 router.post("/login", loginCompany)
 
+// remove company
+// router.delete("/:id", removeCompany)
+
 module.exports = router
