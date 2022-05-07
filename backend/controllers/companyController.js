@@ -59,9 +59,21 @@ const registerCompany = asyncHandler(async (req, res) => {
 
 // authenticate company => POST /api/companies/login
 const loginCompany = asyncHandler(async (req, res) => {
-  
+  const {username, password} = req.body
 
-  res.status(200).json({ message: "login company!" })
+  // check for company username
+  const company = await Company.findOne({ username })
+
+  if (company && (await bcrypt.compare(password, company.password))) {
+    res.json({
+      msg: "company authenticated!",
+      _id: company.id,
+      name: company.name,
+    })
+  } else {
+    res.status(400)
+    throw new Error("invalid company credentials!")
+  }
 })
 
 module.exports = { getCompanies, registerCompany, loginCompany }

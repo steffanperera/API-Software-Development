@@ -51,6 +51,22 @@ const registerOfficer = asyncHandler(async (req, res) => {
 
 // authenticate officer => POST /api/citizens/login
 const loginOfficer = asyncHandler(async (req, res) => {
+  const {officer_id, password} = req.body
+
+  // check for officer id
+  const officer = await Officer.findOne({ officer_id })
+
+  if (officer && (await bcrypt.compare(password, officer.password))) {
+    res.json({
+      msg: "officer authenticated!",
+      _id: officer.id,
+      officer_id: officer.officer_id,
+    })
+  } else {
+    res.status(400)
+    throw new Error("invalid officer credentials!")
+  }
+
   res.status(200).json({ message: "login officer!" })
 })
 

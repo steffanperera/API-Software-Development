@@ -55,7 +55,21 @@ const registerCitizen = asyncHandler(async (req, res) => {
 
 // authenticate citizen => POST /api/citizens/login
 const loginCitizen = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "login company!" })
+  const {username, password} = req.body
+
+  // check for citizen username
+  const citizen = await Citizen.findOne({ username })
+
+  if (citizen && (await bcrypt.compare(password, citizen.password))) {
+    res.json({
+      msg: "citizen authenticated!",
+      _id: citizen.id,
+      name: citizen.name,
+    })
+  } else {
+    res.status(400)
+    throw new Error("invalid citizen credentials!")
+  }
 })
 
 // remove citizen => DELETE /api/citiaens/:id
