@@ -1,7 +1,12 @@
 const mongoose = require("mongoose")
 
 const companySchema = mongoose.Schema({
-  company_name: {
+  name: {
+    type: String,
+    required: [true, "please add company name!"],
+    unique: [true],
+  },
+  username: {
     type: String,
     required: [true, "please add company name!"],
     unique: [true],
@@ -14,7 +19,6 @@ const companySchema = mongoose.Schema({
   password: {
     type: String,
     required: [true, "please add password!"],
-    unique: [true],
   },
   country: {
     type: String,
