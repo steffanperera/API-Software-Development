@@ -1,4 +1,6 @@
 const asyncHandler = require("express-async-handler")
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
 
 const Company = require("../models/companyModel")
 
@@ -11,17 +13,26 @@ const getCompanies = asyncHandler(async (req, res) => {
 
 // register company => POST /api/companies
 const registerCompany = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  const { company_name, email, password, country, job_field } = req.body
+
+  if (!company_name || !email || !password || !country || !job_field) {
     res.status(400)
-    throw new Error("please add a text field!")
+    throw new Error("please add all fields!")
   }
 
-  res.status(200).json({ message: "register company!" })
+  const userExists = await Company.findOne({ company_name })
+
+  if (userExists) {
+    res.status(400)
+    throw new Error("company already exists!")
+  }
+
+  res.status(200).json({ message: "company registered!" })
 })
 
 // authenticate company => POST /api/companies/login
 const loginCompany = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "get companies!" })
+  res.status(200).json({ message: "login company!" })
 })
 
 module.exports = { getCompanies, registerCompany, loginCompany }
