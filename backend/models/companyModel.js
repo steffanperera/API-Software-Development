@@ -4,6 +4,7 @@ const companySchema = mongoose.Schema({
   name: {
     type: String,
     required: [true, "please add company name!"],
+    unique: [true],
   },
   username: {
     type: String,
@@ -13,6 +14,7 @@ const companySchema = mongoose.Schema({
   email: {
     type: String,
     required: [true, "please add email!"],
+    unique: [true],
   },
   password: {
     type: String,
