@@ -33,6 +33,10 @@ const citizenSchema = mongoose.Schema({
     type: String,
     required: [true, "please add password!"],
   },
+  qualifications: {
+    type: String,
+    required: [false],
+  },
   birth_certificate: {
     type: String,
     required: [false],
@@ -45,7 +49,7 @@ const citizenSchema = mongoose.Schema({
     type: String,
     required: [false],
   },
-  qualifications: {
+  verified: {
     type: String,
     required: [false],
   },
