@@ -79,7 +79,39 @@ const loginCitizen = asyncHandler(async (req, res) => {
   }
 })
 
-// remove citizen => DELETE /api/citiaens/:id
+// add qualification => PUT /api/citizens/:id
+const addQualif = asyncHandler(async (req, res) => {
+  const citizen = await Citizen.findById(req.params.id)
+
+  if (!citizen) {
+    res.status(400)
+    throw new Error("citizen not found")
+  }
+
+  const updatedCitizen = await Citizen.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  })
+
+  res.status(200).json(updatedCitizen)
+})
+
+// get by nic
+const citizenByNIC = asyncHandler(async (req, res) => {
+  const citizen = await Citizen.findById(req.params.id)
+
+  if (!citizen) {
+    res.status(400)
+    throw new Error("citizen not found")
+  }
+
+  const citizenFound = await Citizen.findById(req.params.id, req.body, {
+    new: true,
+  })
+
+  res.status(200).json(citizenFound)
+})
+
+// remove citizen => DELETE /api/citizens/:id
 const removeCitizen = asyncHandler(async (req, res) => {
   const citizen = await Citizen.findById(req.params.id)
 
@@ -93,4 +125,4 @@ const removeCitizen = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id })
 })
 
-module.exports = { getCitizens, registerCitizen, loginCitizen, removeCitizen }
+module.exports = { getCitizens, registerCitizen, loginCitizen, addQualif, citizenByNIC, removeCitizen }

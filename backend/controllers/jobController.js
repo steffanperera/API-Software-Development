@@ -18,6 +18,7 @@ const postJob = asyncHandler(async (req, res) => {
 
   const job = await Job.create({
     text: req.body.text,
+    company: req.company.id,
   })
 
   res.status(200).json(job)

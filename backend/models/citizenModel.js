@@ -33,6 +33,22 @@ const citizenSchema = mongoose.Schema({
     type: String,
     required: [true, "please add password!"],
   },
+  birth_certificate: {
+    type: String,
+    required: [false],
+  },
+  cv: {
+    type: String,
+    required: [false],
+  },
+  passport_copy: {
+    type: String,
+    required: [false],
+  },
+  qualifications: {
+    type: String,
+    required: [false],
+  },
 })
 
 module.exports = mongoose.model("Citizen", citizenSchema)
