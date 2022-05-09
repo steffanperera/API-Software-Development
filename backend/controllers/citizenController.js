@@ -133,6 +133,27 @@ const addDocs = asyncHandler(async (req, res) => {
   })
 })
 
+// verify citizen => PUT /api/citizens/:nic
+const verifyCitizen = asyncHandler(async (req, res) => {
+  const citizen = await Citizen.find({ nic: req.params.nic })
+
+  if (!citizen) {
+    res.status(400)
+    throw new Error("citizen not found")
+  }
+
+  const updatedCitizen = await Citizen.findOneAndUpdate(req.params.nic, req.body, {
+    new: true,
+  })
+
+  res.status(200).json({
+    message: "citizen updated!",
+    update_status: "true",
+    matchedCount: "1",
+    modifiedCount: "1",
+  })
+})
+
 // remove citizen => DELETE /api/citizens/:id
 const removeCitizen = asyncHandler(async (req, res) => {
   const citizen = await Citizen.findById(req.params.id)
@@ -154,5 +175,6 @@ module.exports = {
   loginCitizen,
   addQualif,
   addDocs,
+  verifyCitizen,
   removeCitizen,
 }
