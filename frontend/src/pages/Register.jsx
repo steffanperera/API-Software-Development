@@ -1,5 +1,5 @@
-import React from 'react'
-import {useState, useEffect} from "react"
+import React from "react"
+import { useState, useEffect } from "react"
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -12,8 +12,15 @@ function Register() {
     password: "",
     password2: "",
   })
+
+  const { name, nic, address, phone, username, email, password, password2 } = formData
+
   return (
-    <div>Register</div>
+    <>
+      <section className="heading">
+        <h1></h1>
+      </section>
+    </>
   )
 }
 
