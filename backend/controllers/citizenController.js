@@ -11,7 +11,7 @@ const getCitizens = asyncHandler(async (req, res) => {
   res.status(200).json(citizens)
 })
 
-// get by nic =>
+// get by nic => GET /api/citizens/:nic
 const citizenByNIC = asyncHandler(async (req, res) => {
   const citizen = await Citizen.find({ nic: req.params.nic })
 
@@ -154,18 +154,51 @@ const verifyCitizen = asyncHandler(async (req, res) => {
   })
 })
 
-// remove citizen => DELETE /api/citizens/:id
+// remove citizen => DELETE /api/citizens/:nic
 const removeCitizen = asyncHandler(async (req, res) => {
-  const citizen = await Citizen.findById(req.params.id)
+  const citizen = await Citizen.deleteOne({ nic: req.params.nic })
 
   if (!citizen) {
     res.status(400)
     throw new Error("citizen not found!")
   }
 
-  await citizen.remove()
+  res.status(200).json({
+    message: "citizen profile has been removed!",
+    update_status: "true",
+    matchedCount: "1",
+    modifiedCount: "1",
+  })
+})
 
-  res.status(200).json({ id: req.params.id })
+// find by qualifications => GET /api/citizens/find/:(qualifications)
+const findQualif = asyncHandler(async (req, res) => {
+  const citizen = await Citizen.findOne({ qualifications: req.params.qualifications })
+
+  if (!citizen) {
+    res.status(400)
+    throw new Error("citizen not found")
+  }
+
+  res.status(200).json(citizen)
+})
+
+// get contacts => GET /api/citizens/:nic/contacts
+const getContacts = asyncHandler(async (req, res) => {
+  const citizen = await Citizen.find({ nic: req.params.nic })
+
+  if (!citizen) {
+    res.status(400)
+    throw new Error("citizen not found")
+  }
+
+  res.status(200).json({
+    message: "citizen contacts found!",
+    name: "L M N Fernando",
+    nic: "993240061V",
+    phone: "0763445661",
+    email: "lmnfernando@gmail.com",
+  })
 })
 
 module.exports = {
@@ -177,4 +210,6 @@ module.exports = {
   addDocs,
   verifyCitizen,
   removeCitizen,
+  findQualif,
+  getContacts,
 }

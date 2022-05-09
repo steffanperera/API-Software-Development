@@ -1,6 +1,17 @@
 const express = require("express")
 const router = express.Router()
-const { getCitizens, citizenByNIC, registerCitizen, loginCitizen, addQualif, addDocs, verifyCitizen, removeCitizen } = require("../controllers/citizenController")
+const {
+  getCitizens,
+  citizenByNIC,
+  registerCitizen,
+  loginCitizen,
+  addQualif,
+  addDocs,
+  verifyCitizen,
+  removeCitizen,
+  findQualif,
+  getContacts,
+} = require("../controllers/citizenController")
 
 // get citizens
 router.get("/", getCitizens)
@@ -25,5 +36,11 @@ router.put("/verify/:nic", verifyCitizen)
 
 // remove citizen
 router.delete("/:nic", removeCitizen)
+
+// get by qualifications
+router.get("/find/:qualifications", findQualif)
+
+// get contacts
+router.get("/:nic/contacts", getContacts)
 
 module.exports = router
