@@ -194,10 +194,10 @@ const getContacts = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     message: "citizen contacts found!",
-    name: "L M N Fernando",
-    nic: "993240061V",
-    phone: "0763445661",
-    email: "lmnfernando@gmail.com",
+    name: citizen.name,
+    nic: citizen.nic,
+    phone: citizen.phone,
+    email: citizen.email,
   })
 })
 
