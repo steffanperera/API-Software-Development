@@ -21,7 +21,7 @@ router.put("/:nic", addQualif)
 router.put("/docs/:nic", addDocs)
 
 // verify citizent
-router.put("/:nic", verifyCitizen)
+router.put("/verify/:nic", verifyCitizen)
 
 // remove citizen
 router.delete("/:nic", removeCitizen)

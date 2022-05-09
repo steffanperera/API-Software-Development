@@ -147,7 +147,7 @@ const verifyCitizen = asyncHandler(async (req, res) => {
   })
 
   res.status(200).json({
-    message: "citizen updated!",
+    message: "citizen profile verified!",
     update_status: "true",
     matchedCount: "1",
     modifiedCount: "1",
