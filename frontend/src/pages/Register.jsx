@@ -21,22 +21,106 @@ function Register() {
   return (
     <>
       <section className="heading">
-        <h1>
+        <h4>
           <FaUser /> Register
-        </h1>
+        </h4>
         <p>Please create an accout!</p>
       </section>
       <section className="form">
         <form>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            value={name}
-            placeholder="Enter your name"
-            onChange={onChange}
-          />
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              name="name"
+              value={name}
+              placeholder="Enter name"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              nic="nic"
+              value={nic}
+              placeholder="Enter nic number"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              address="address"
+              value={address}
+              placeholder="Enter address"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              phone="phone"
+              value={phone}
+              placeholder="Enter phone number"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              username="username"
+              value={username}
+              placeholder="Enter username"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              email="email"
+              value={email}
+              placeholder="Enter email"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              password="password"
+              value={password}
+              placeholder="Enter password"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              password2="password2"
+              value={password2}
+              placeholder="Confirm password"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-block">
+              Register
+            </button>
+          </div>
         </form>
       </section>
     </>
