@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import CompanyDashboard from "./pages/CompanyDashboard"
 import Dashboard from "./pages/Dashboard"
 import Login from "./pages/Login"
+import Qualifications from "./pages/Qualifications"
 import Register from "./pages/Register"
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/company-dashboard" element={<CompanyDashboard />} />
+            <Route path="/qualifications" element={<Qualifications />} />
           </Routes>
         </div>
       </Router>
