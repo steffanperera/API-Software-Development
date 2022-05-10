@@ -11,7 +11,7 @@ function Header() {
       <ul>
         <li>
           <Link to="/login">
-            <FaSignInAlt /> 973260081V
+            <FaSignInAlt /> Company
           </Link>
         </li>
         <li>

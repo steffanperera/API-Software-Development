@@ -26,8 +26,8 @@ function CompanyDashboard() {
         <form>
           <div className="form-group">
             <br />
-            <p>Citizen profile</p>
-            <br />
+            <p>Citizen profile not found</p>
+            {/* <br />
             <br />
             <h5>6276256f58c6d23fe478e652</h5>
             <h5>A A R S S Perera</h5>
@@ -39,8 +39,14 @@ function CompanyDashboard() {
             <h5>BSc (Hons) Civil Engineering</h5>
             <h5>birth_certificate.pdf</h5>
             <h5>cv.png</h5>
-            <h5>passport_copy.pdf</h5>
+            <h5>passport_copy.pdf</h5> */}
           </div>
+          <br />
+          {/* <div className="form-group">
+            <button type="submit" className="btn btn-block">
+              Deactivate Account
+            </button>
+          </div> */}
         </form>
       </section>
     </>
